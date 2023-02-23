@@ -1,19 +1,19 @@
 #include "main.h"
 
 /**
-* print_line - draws a straight line in the terminal
-* @n: the number of times the character _
-* Return: none;
-**/
-
+ * print_line - print n underscore characters
+ * @n: number of times to print _
+ */
 void print_line(int n)
 {
-	int count;
+	int i;
 
-	for (count = 0; count < n; count++)
+	if (n > 0)
 	{
-		_putchar('_');
+		for (i = 0; i < n; i++)
+		{
+			_putchar('_');
+		}
 	}
 	_putchar('\n');
 }
-
