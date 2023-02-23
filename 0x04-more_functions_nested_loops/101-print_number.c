@@ -1,47 +1,146 @@
-#include "holberton.h"
+#include "main.h"
+#include "stdio.h"
 
 /**
- * print_number - Function that prints an integer.
- * @n: int type number
- * Description: Can only use _putchar to print.
+ * print_number - prints an integer
+ * @n: the integer to print
  */
 void print_number(int n)
 {
-	long m; /* power of 10 */
-	int c; /* boolean check */
-	long num; /* convert int to long */
+	int i;
+	int max;
+	int minVal = n + 1 == -2147483640 - 7 ? -1 : 0;
+	int rem = n < 0 ? 0 - n + minVal : n;
 
-	num = n;
-	/* negatives */
-	if (num < 0)
-	{
-		num *= -1;
+	max = 1;
+	max *= 100000;
+	max *= 100000;
+
+	if (n < 0)
 		_putchar('-');
-	}
 
-	/* count up */
-	m = 1;
-	c = 1;
-	while (c)
+	for (i = 9; i >= 0; i--)
 	{
-		if (num / (m * 10) > 0)
-			m *= 10;
-		else
-			c = 0;
-	}
+		int power = b10_pow(i);
 
-	/* count down */
-	while (num >= 0)
-	{
-		if (m == 1)
-		{
-			_putchar(num % 10 + '0');
-			num = -1;
-		}
-		else
-		{
-			_putchar((num / m % 10) + '0');
-			m /= 10;
-		}
+		if (rem > power - 1 && !(i == 0 && minVal < 0))
+			_putchar((int)((rem / power) % 10) + '0');
+		else if (i == 0 && minVal >= 0)
+			_putchar((int)((rem / power) % 10) + '0');
+		if (i == 0 && minVal < 0)
+			_putchar('8');
 	}
 }
+
+/**
+ * b10_pow - Computes the power of 10 to the given index
+ * @idx: The index to which 10 is raised to.
+ *
+ * Return: A power of 10
+ */
+int b10_pow(int idx)
+{
+	int i;
+	int result = 1;
+
+	if (idx < 0)
+		return (0);
+
+	for (i = 0; i < idx; i++)
+	{
+		result *= 10;
+	}
+	return (result);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
