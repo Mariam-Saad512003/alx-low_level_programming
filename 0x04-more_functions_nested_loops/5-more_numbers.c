@@ -19,4 +19,3 @@ int l, c;
 		_putchar('\n');
 	}
 }
-
