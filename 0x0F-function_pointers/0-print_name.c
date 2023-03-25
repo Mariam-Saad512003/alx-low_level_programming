@@ -1,27 +1,15 @@
+#include <stdlib.h>
 #include <stdio.h>
-#include <stdarg.h>
-#include "variadic_functions.h"
+#include "function_pointers.h"
 /**
- * sum_them_all - Entry Point
- * @n: variadic inputs
- * Return: sum
+ * print_name - f points to either func in main
+ * @name: name
+ * @f: pointer to print upp or non upp func
+ * Return: void
  */
-int sum_them_all(const unsigned int n, ...)
+void print_name(char *name, void (*f)(char *))
 {
-	va_list valist;
-	unsigned int i, sum = 0;
-
-	if (n == 0)
-		return (0);
-
-	va_start(valist, n);
-
-	for (i = 0; i < n; i++)
-	{
-		sum += va_arg(valist, const unsigned int);
-	}
-
-	va_end(valist);
-
-	return (sum);
+	if (name == NULL || f == NULL)
+		return;
+	f(name);
 }
